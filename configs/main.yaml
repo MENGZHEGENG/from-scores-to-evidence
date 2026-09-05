@@ -1,0 +1,20 @@
+seed: 2027
+label:
+  bonafide: 1
+  spoof: 0
+matched_evidence:
+  score_columns:
+    passive: passive_score
+    watermark: watermark_score
+    retrieval: retrieval_score
+    profile: profile_margin
+  fusion_weights:
+    passive: 1.0
+    watermark: 1.0
+    retrieval: 1.0
+    profile: 1.0
+calibration:
+  folds: family
+  max_iter: 1000
+active_selection:
+  budgets: [100, 500, 1000, 2000]

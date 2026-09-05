@@ -1,0 +1,38 @@
+name: asvspoof5_track1_dev_matched
+label_convention:
+  bonafide: 1
+  spoof: 0
+score_orientation: larger_scores_support_bonafide_or_provenance_consistency
+primary_score_file: evidence_scores.csv
+held_out_families:
+  - A09
+  - A10
+  - A11
+  - A12
+  - A13
+  - A14
+  - A15
+  - A16
+folding:
+  spoof_rows: use_family_as_holdout_fold
+  bonafide_rows: assign_by_stable_sample_id_hash_to_the_same_eight_folds
+  calibration: train_on_all_other_folds_and_score_the_held_out_fold
+support_filtering:
+  retrieval_profile: remove_support_examples_from_the_held_out_spoof_family
+  nearest_neighbor_audit: exclude_exact_sample_speaker_and_audio_path_matches_when_those_columns_are_available
+required_columns:
+  - sample_id
+  - label
+  - family
+  - passive_score
+  - watermark_score
+  - retrieval_score
+  - profile_margin
+optional_columns:
+  - nearest_distance
+  - speaker_id
+  - source
+notes:
+  - This file defines the split policy expected by the public scripts.
+  - It does not include corpus rows or score dumps.
+  - Use docs/input_schemas.md for column validation details.
