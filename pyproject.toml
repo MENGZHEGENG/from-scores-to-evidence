@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "from-scores-to-evidence"
 version = "0.1.0"
-description = "Public code for From Scores to Evidence: Cue-Preserving Calibration for Speech Deepfake Detection."
+description = "Reproducibility code for From Scores to Evidence: auditable speech deepfake decisions from multi-cue evidence."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [

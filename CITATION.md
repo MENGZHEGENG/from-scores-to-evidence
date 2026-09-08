@@ -1,5 +1,8 @@
 # Citation
 
-Citation metadata is intentionally omitted until the author list and public preprint record are approved.
+If this repository helps your work, please cite the paper and include the repository URL:
 
-Please cite the accompanying paper after official metadata is available. Do not create a BibTeX entry from the temporary repository name alone.
+- **Paper title:** From Scores to Evidence: Auditable Decisions Can Improve Speech Deepfake Detection
+- **Repository:** https://github.com/MENGZHEGENG/from-scores-to-evidence
+
+A formatted bibliographic entry can be added once the public paper record is finalized.

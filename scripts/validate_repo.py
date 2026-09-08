@@ -28,6 +28,8 @@ FORBIDDEN_TEXT = [
     _chars(47, 104, 111, 109, 101, 47, 109, 101, 103, 48, 48, 48),
     _chars(102, 117, 108, 108, 32, 114, 101, 112, 111),
     _chars(112, 114, 105, 118, 97, 116, 101, 32, 114, 101, 112, 111),
+    _chars(105, 99, 108, 114, 50, 48, 50, 55),
+    _chars(73, 67, 76, 82, 50, 48, 50, 55),
 ]
 FORBIDDEN_CASE_SENSITIVE_TEXT = []
 FORBIDDEN_SUFFIXES = {
@@ -44,6 +46,18 @@ FORBIDDEN_SUFFIXES = {
     ".tsv",
     ".wav",
     ".ckpt",
+    ".tex",
+    ".bib",
+    ".bst",
+    ".sty",
+    ".cls",
+    ".bbl",
+    ".aux",
+    ".out",
+    ".xdv",
+    ".fdb_latexmk",
+    ".fls",
+    ".synctex.gz",
 }
 REQUIRED_PATHS = {
     ".github/workflows/ci.yml",
@@ -80,12 +94,12 @@ REQUIRED_PATHS = {
 }
 REQUIRED_README_SNIPPETS = {
     "quick-start demo command": "python scripts/run_all.py --demo --out runs/demo",
-    "strict release validation command": "python scripts/validate_repo.py --clean --history --strict-local",
+    "repo validation command": "python scripts/validate_repo.py --clean --history --strict-local",
     "main reproduction command": "python scripts/run_all.py --input-dir prepared_scores --out runs/main",
     "matched evaluation command": "python scripts/run_matched_evidence.py --scores runs/main/evidence_scores_with_folds.csv --out runs/main",
     "calibration ablation command": "python scripts/run_calibration_ablation.py --scores runs/main/evidence_scores_with_folds.csv --out runs/main",
     "calibration stability command": "python scripts/run_calibration_split_stability.py --scores runs/main/evidence_scores_with_folds.csv --out runs/main",
-    "manual-review triage command": "python scripts/run_evidence_card_triage.py --scores runs/main/evidence_scores_with_folds.csv --out runs/main",
+    "selective review command": "python scripts/run_evidence_card_triage.py --scores runs/main/evidence_scores_with_folds.csv --out runs/main",
 }
 REQUIRED_REPRODUCTION_SNIPPETS = {
     "main reproduction command": "python scripts/run_all.py --input-dir prepared_scores --out runs/main",
@@ -99,7 +113,10 @@ FORBIDDEN_TRACKED_DIRS = {
     "figures",
     "tables",
     "paper",
+    "manuscript",
+    "tex",
 }
+FORBIDDEN_TRACKED_DIRS.add(_chars(105, 99, 108, 114, 50, 48, 50, 55))
 FORBIDDEN_CACHE_DIRS = {
     "__pycache__",
     ".pytest_cache",
@@ -154,7 +171,7 @@ def validate_tree(root: Path, strict_local: bool = False) -> list[str]:
     issues = []
     for rel in sorted(REQUIRED_PATHS):
         if not (root / rel).is_file():
-            issues.append(f"required release file is missing: {rel}")
+            issues.append(f"required public-repo file is missing: {rel}")
     readme = root / "README.md"
     if readme.is_file():
         readme_text = readme.read_text(encoding="utf-8", errors="ignore")
@@ -248,8 +265,8 @@ def validate_history(root: Path) -> list[str]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Validate that the public release tree is clean and portable.")
-    parser.add_argument("--history", action="store_true", help="also scan previous Git commits before public release")
+    parser = argparse.ArgumentParser(description="Validate that the public repo tree is clean and portable.")
+    parser.add_argument("--history", action="store_true", help="also scan previous Git commits before pushing publicly")
     parser.add_argument(
         "--strict-local",
         action="store_true",
@@ -271,7 +288,7 @@ def main() -> int:
         for issue in issues:
             print(issue)
         return 1
-    scope_items = ["release tree"]
+    scope_items = ["public repo tree"]
     if args.strict_local:
         scope_items.append("local cleanup")
     if args.history:

@@ -20,5 +20,5 @@ jobs:
         run: python -m pytest -q
       - name: Run demo pipeline
         run: python scripts/run_all.py --demo --out runs/demo --skip-figures
-      - name: Validate release tree
+      - name: Validate public repo tree
         run: python scripts/validate_repo.py

@@ -180,8 +180,8 @@ def test_public_release_metadata_files_are_present() -> None:
 
     assert citation.is_file()
     assert license_file.is_file()
-    assert "official metadata is available" in citation.read_text(encoding="utf-8")
-    assert "License pending" in license_file.read_text(encoding="utf-8")
+    assert "From Scores to Evidence: Auditable Decisions Can Improve Speech Deepfake Detection" in citation.read_text(encoding="utf-8")
+    assert "All rights reserved." in license_file.read_text(encoding="utf-8")
 
 
 def test_asvspoof5_split_assignment_is_deterministic() -> None:

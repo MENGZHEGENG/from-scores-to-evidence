@@ -1,24 +1,22 @@
 # Data Sources
 
-This repository does not redistribute speech audio, trained weights, or large score tables. Prepare those inputs from the original providers, then convert the resulting scores to the CSV schemas in `docs/input_schemas.md`.
+This repository works from score-level inputs. It does not redistribute speech audio, pretrained weights, or full private result tables.
 
-## Main Matched Evaluation
+## Main evaluation inputs
 
-- ASVspoof 5: use the official ASVspoof site and the ASVspoof 5 Zenodo record for the Track 1 development data and challenge documentation.
-- Split policy: use `configs/asvspoof5_track1_dev_splits.yaml` with `scripts/apply_asvspoof5_splits.py`; the held-out synthesis families are A09 through A16, with bona fide examples assigned to the same eight folds by a stable `sample_id` hash.
+Use the original providers for:
 
-## Auxiliary Stress Checks
+- **ASVspoof 5 Track 1 development data** and the accompanying challenge documentation;
+- any pretrained detector used to generate the passive scores;
+- any keyed-probe pipeline used to generate conditional watermark scores;
+- any retrieval or speaker-profile features used for the auxiliary cues.
 
-- ASVspoof 2021 DF: use the official ASVspoof 2021 page and the ASVspoof challenge baseline/evaluation repository for keys, metadata, and evaluation conventions.
-- In-The-Wild: use the provider dataset page for the published real-world audio deepfake benchmark.
-- WaveFake: use the WaveFake project repository and Zenodo release for generated-audio data and accompanying code.
+The split policy used in the paper is documented in `configs/asvspoof5_track1_dev_splits.yaml`.
 
-## Expected Local Inputs
+## Auxiliary stress inputs
 
-After obtaining data under the applicable licenses, create only the score-level files consumed by the scripts:
+Use the original providers for any passive-detector stress benchmarks and signal-processing attack evaluations referenced in the paper.
 
-- `evidence_scores.csv` for matched evidence-card evaluation.
-- `stress_check_scores.csv` for passive-detector and watermark-probe stress checks.
-- `ssl_attack_scores.csv` for signal-processing stress summaries.
+## Local preparation rule
 
-Run `python scripts/validate_inputs.py` before any experiment command.
+After obtaining the upstream data under the original licenses, prepare only the score-level CSV files consumed by the scripts in this repository. Validate those files with `python scripts/validate_inputs.py` before running experiments.

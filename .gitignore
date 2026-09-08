@@ -23,3 +23,21 @@ data/
 .DS_Store
 .vscode/
 .idea/
+
+# Keep manuscript files out of the public repo
+paper/
+manuscript/
+tables/
+figures/
+*.tex
+*.bib
+*.bst
+*.sty
+*.cls
+*.bbl
+*.aux
+*.out
+*.xdv
+*.fdb_latexmk
+*.fls
+*.synctex.gz
