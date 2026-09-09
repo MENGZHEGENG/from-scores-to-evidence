@@ -1,8 +1,8 @@
 # Citation
 
-If this repository helps your work, please cite the paper and include the repository URL:
+Please cite the paper and repository:
 
-- **Paper title:** From Scores to Evidence: Auditable Decisions Can Improve Speech Deepfake Detection
+- **Paper:** [From Scores to Evidence: Auditable Decisions Can Improve Speech Deepfake Detection](https://arxiv.org/pdf/2609.08899)
+- **Authors:** Mengzhe Geng, Yujia Lu, Patrick Littell, Manuela Kunz, and Xie Chen
+- **arXiv:** https://arxiv.org/pdf/2609.08899
 - **Repository:** https://github.com/MENGZHEGENG/from-scores-to-evidence
-
-A formatted bibliographic entry can be added once the public paper record is finalized.

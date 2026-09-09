@@ -641,7 +641,7 @@ def test_validate_repo_tree_mode_passes() -> None:
         text=True,
         capture_output=True,
     )
-    assert "release tree validation passed" in result.stdout
+    assert "public repo tree validation passed" in result.stdout
 
 
 def test_validate_history_reports_prior_sensitive_strings(tmp_path: Path) -> None:
