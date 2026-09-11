@@ -138,4 +138,17 @@ This check looks for tracked manuscript files, generated outputs, local caches, 
 
 ## Citation
 
-See `CITATION.md`.
+Please cite the paper and repository. The paper citation is available directly as BibTeX:
+
+```bibtex
+@article{geng2026scores,
+  title   = {From Scores to Evidence: Auditable Decisions Can Improve Speech Deepfake Detection},
+  author  = {Geng, Mengzhe and Lu, Yujia and Littell, Patrick and Kunz, Manuela and Chen, Xie},
+  journal = {arXiv preprint arXiv:2609.08899},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2609.08899},
+  doi     = {10.48550/arXiv.2609.08899}
+}
+```
+
+See `CITATION.md` for the paper and repository links.
