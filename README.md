@@ -146,7 +146,7 @@ Please cite the paper and repository. The paper citation is available directly a
   author  = {Geng, Mengzhe and Lu, Yujia and Littell, Patrick and Kunz, Manuela and Chen, Xie},
   journal = {arXiv preprint arXiv:2609.08899},
   year    = {2026},
-  url     = {https://arxiv.org/abs/2609.08899},
+  url     = {https://arxiv.org/pdf/2609.08899},
   doi     = {10.48550/arXiv.2609.08899}
 }
 ```
